@@ -10,6 +10,8 @@ model = genai.GenerativeModel('models/gemini-1.5-flash')
 # App title
 st.title("Welcome, Challenger")
 
+st.subheader("Only the Sharpest Minds Make It to the Hall of Fame!")
+
 # Question bank
 question_list = [
     "Often played in doubles or singles, this fast-paced indoor sport uses a feathered projectile instead of a ball. It requires quick reflexes and is a staple in many Commonwealth Games. What sport is this?",
