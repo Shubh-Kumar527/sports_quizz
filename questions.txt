@@ -1,0 +1,92 @@
+import streamlit as st
+import random
+from google import generativeai as genai
+
+# Configure Gemini
+GEMINI_API_KEY = 'AIzaSyCQGt3DkRf6BrkVV9HGWmtl9JrjdI6gEtA'
+genai.configure(api_key=GEMINI_API_KEY)
+model = genai.GenerativeModel('models/gemini-1.5-flash')
+
+# App title
+st.title("🇫🇷 Friendly French Quiz for Parents")
+
+# Question bank
+question_list = [
+    '1) What was the Bastille?',
+    '2) When was the Bastille stormed?',
+    '3) Why was the Bastille hated by all?',
+    '4) Who led the storming of the Bastille?',
+    '5) What is the historical significance of 14 July in France?',
+    '6) How is Bastille Day celebrated in France?',
+    '7) How is the fall of the Bastille remembered today?',
+    '8) What is the most common activity in France during the Bastille Day celebration?'
+]
+
+# Initialize state
+if 'asked_questions' not in st.session_state:
+    st.session_state.asked_questions = []
+
+if 'question' not in st.session_state or st.session_state.question == "":
+    def pick_question():
+        remaining = [q for q in question_list if q not in st.session_state.asked_questions]
+        if remaining:
+            q = random.choice(remaining)
+            st.session_state.asked_questions.append(q)
+            return q
+        return None
+
+    st.session_state.question = pick_question()
+
+if 'feedback' not in st.session_state:
+    st.session_state.feedback = ""
+
+# Show current question
+if st.session_state.question:
+    st.subheader("📘 Question:")
+    st.write(st.session_state.question)
+
+    a = st.text_input("✍️ Your Answer:")
+
+    if st.button("Check Answer") and a:
+        prompt = f"""
+You're a friendly and supportive tutor helping a parent understand French history.
+They may not know the full answer — and that's perfectly okay!
+
+Please:
+- Gently assess their answer.
+- If it's close or partially right, encourage them.
+- Add missing details in a simple way.
+- Always use a kind and positive tone.
+
+Question: {st.session_state.question}
+Answer: {a}
+
+What feedback would you give?
+"""
+        response = model.generate_content(prompt)
+        st.session_state.feedback = response.text
+
+    if st.session_state.feedback:
+        st.write("### 🤖 Gemini's Feedback:")
+        st.write(st.session_state.feedback)
+
+    if st.button("🔄 Next Question"):
+        # Clear old feedback and get a new question
+        st.session_state.feedback = ""
+        remaining = [q for q in question_list if q not in st.session_state.asked_questions]
+        if remaining:
+            st.session_state.question = random.choice(remaining)
+            st.session_state.asked_questions.append(st.session_state.question)
+        else:
+            st.success("🎉 You've answered all the questions!")
+            if st.button("Restart Quiz"):
+                st.session_state.asked_questions = []
+                st.session_state.question = ""
+                st.session_state.feedback = ""
+
+else:
+    st.success("🎉 You've completed all questions!")
+    if st.button("Restart Quiz"):
+        st.session_state.asked_questions = []
+        st.session_state.question = ""
+        st.session_state.feedback = ""
