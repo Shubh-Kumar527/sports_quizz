@@ -8,7 +8,7 @@ genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('models/gemini-1.5-flash')
 
 # App title
-st.title("🇫🇷 Friendly French Quiz for Parents")
+st.title("Welcome, Challenger")
 
 # Question bank
 question_list = [
