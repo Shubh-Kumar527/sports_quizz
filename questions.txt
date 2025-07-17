@@ -12,14 +12,17 @@ st.title("🇫🇷 Friendly French Quiz for Parents")
 
 # Question bank
 question_list = [
-    '1) What was the Bastille?',
-    '2) When was the Bastille stormed?',
-    '3) Why was the Bastille hated by all?',
-    '4) Who led the storming of the Bastille?',
-    '5) What is the historical significance of 14 July in France?',
-    '6) How is Bastille Day celebrated in France?',
-    '7) How is the fall of the Bastille remembered today?',
-    '8) What is the most common activity in France during the Bastille Day celebration?'
+    "Often played in doubles or singles, this fast-paced indoor sport uses a feathered projectile instead of a ball. It requires quick reflexes and is a staple in many Commonwealth Games. What sport is this?",
+    "Known as 'the beautiful game,' this globally celebrated sport is played by two teams of eleven, but only the goalkeeper is allowed to use their hands. What is this sport commonly called in the United States?",
+    "This high-speed, full-contact sport is played on a rink, involves gliding on skates, and features a black rubber puck. It’s a national obsession in Canada. Name the sport.",
+    "In this precision-based Olympic discipline, competitors must account for wind and distance as they launch projectiles from a curved or compound tool. What sport is this?",
+    "With origins tracing back to 19th-century England, this racquet sport features a grass, clay, or hard court and four Grand Slam tournaments annually. What sport is being described?",
+    "This physically intense sport features touchdowns, field goals, and downs, and is played on a 100-yard field. What sport is it, especially popular on Thanksgiving in the U.S.?",
+    "Encompassing events like hurdles, javelin, and long jump, this athletic category has its roots in ancient Greek competition. What is the general term for these combined events?",
+    "With a court measuring 94 feet long, this sport involves dribbling, shooting, and defensive blocks, and features a three-point arc. What game is this?",
+    "Originating in the late 19th century, this sport is known for spikes, blocks, and digs, and is played on both hardwood and sandy surfaces. What sport is it?",
+    "Sometimes called 'the sport of kings,' this horseback team game requires hitting a ball into a goal using a long mallet, while riding at high speeds. What is this sport?"
+
 ]
 
 # Initialize state
