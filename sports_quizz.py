@@ -52,7 +52,7 @@ if st.session_state.question:
 
     if st.button("Check Answer") and a:
         prompt = f"""
-You're a friendly and supportive tutor helping a parent understand French history.
+You're a friendly and supportive tutor helping a parent answer some sports quizz
 They may not know the full answer — and that's perfectly okay!
 
 Please:
