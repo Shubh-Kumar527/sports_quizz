@@ -84,10 +84,10 @@ What feedback would you give?
             st.session_state.asked_questions.append(st.session_state.question)
         else:
             st.success("🎉 You've answered all the questions!")
-            if st.button("Restart Quiz"):
-                st.session_state.asked_questions = []
-                st.session_state.question = ""
-                st.session_state.feedback = ""
+            # if st.button("Restart Quiz"):
+            #     st.session_state.asked_questions = []
+            #     st.session_state.question = ""
+            #     st.session_state.feedback = ""
 
 else:
     st.success("🎉 You've completed all questions!")
