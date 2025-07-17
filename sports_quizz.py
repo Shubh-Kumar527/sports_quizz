@@ -2,17 +2,15 @@ import streamlit as st
 import random
 from google import generativeai as genai
 
-# Configure Gemini API key
+# Configure Gemini
 GEMINI_API_KEY = 'AIzaSyCQGt3DkRf6BrkVV9HGWmtl9JrjdI6gEtA'
 genai.configure(api_key=GEMINI_API_KEY)
-
-# Initialize model
 model = genai.GenerativeModel('models/gemini-1.5-flash')
 
 # App title
-st.title('🇫🇷 Welcome to the French Quiz 🇫🇷')
+st.title("🇫🇷 Friendly French Quiz for Parents")
 
-# Question list
+# Question bank
 question_list = [
     "Often played in doubles or singles, this fast-paced indoor sport uses a feathered projectile instead of a ball. It requires quick reflexes and is a staple in many Commonwealth Games. What sport is this?",
     "Known as 'the beautiful game,' this globally celebrated sport is played by two teams of eleven, but only the goalkeeper is allowed to use their hands. What is this sport commonly called in the United States?",
@@ -27,20 +25,71 @@ question_list = [
 
 ]
 
-# Only select a random question once
-if 'question' not in st.session_state:
-    st.session_state.question = random.choice(question_list)
+# Initialize state
+if 'asked_questions' not in st.session_state:
+    st.session_state.asked_questions = []
 
-# Show question
-st.subheader("Question:")
-st.write(st.session_state.question)
+if 'question' not in st.session_state or st.session_state.question == "":
+    def pick_question():
+        remaining = [q for q in question_list if q not in st.session_state.asked_questions]
+        if remaining:
+            q = random.choice(remaining)
+            st.session_state.asked_questions.append(q)
+            return q
+        return None
 
-# User input
-a = st.text_input('Enter your answer:')
+    st.session_state.question = pick_question()
 
-# Check answer and display feedback
-if a:
-    prompt = f"Please check and evaluate this answer:\nQuestion: {st.session_state.question}\nAnswer: {a}\nIs it correct? Provide feedback."
-    response = model.generate_content(prompt)
-    st.write("### Feedback:")
-    st.write(response.text)
+if 'feedback' not in st.session_state:
+    st.session_state.feedback = ""
+
+# Show current question
+if st.session_state.question:
+    st.subheader("📘 Question:")
+    st.write(st.session_state.question)
+
+    a = st.text_input("✍️ Your Answer:")
+
+    if st.button("Check Answer") and a:
+        prompt = f"""
+You're a friendly and supportive tutor helping a parent understand French history.
+They may not know the full answer — and that's perfectly okay!
+
+Please:
+- Gently assess their answer.
+- If it's close or partially right, encourage them.
+- Add missing details in a simple way.
+- Always use a kind and positive tone.
+
+Question: {st.session_state.question}
+Answer: {a}
+
+What feedback would you give?
+"""
+        response = model.generate_content(prompt)
+        st.session_state.feedback = response.text
+
+    if st.session_state.feedback:
+        st.write("### 🤖 Gemini's Feedback:")
+        st.write(st.session_state.feedback)
+
+    if st.button("🔄 Next Question"):
+        # Clear old feedback and get a new question
+        st.session_state.feedback = ""
+        remaining = [q for q in question_list if q not in st.session_state.asked_questions]
+        if remaining:
+            st.session_state.question = random.choice(remaining)
+            st.session_state.asked_questions.append(st.session_state.question)
+        else:
+            st.success("🎉 You've answered all the questions!")
+            if st.button("Restart Quiz"):
+                st.session_state.asked_questions = []
+                st.session_state.question = ""
+                st.session_state.feedback = ""
+
+else:
+    st.success("🎉 You've completed all questions!")
+    if st.button("Restart Quiz"):
+        st.session_state.asked_questions = []
+        st.session_state.question = ""
+        st.session_state.feedback = ""
