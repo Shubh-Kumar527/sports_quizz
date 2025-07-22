@@ -126,6 +126,6 @@ elif mode == "Multiple Choice":
                 st.error(f"❌ Incorrect. The correct answer was: {current_mcq['answer']}")
 
             st.session_state.mcq_index += 1
-            st.experimental_rerun()
+            st.rerun()
     else:
         st.success(f"🎉 MCQ Round complete! Your score: {st.session_state.mcq_score}/{len(mcq_questions)}")
