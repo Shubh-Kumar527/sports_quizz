@@ -104,7 +104,7 @@ mcq_questions = [
     {
         "question": "Which country hosted the 2022 FIFA World Cup?",
         "options": ["Qatar", "Russia", "USA", "Spain"],
-        "answer": "Qatar"
+        "answer": "Qatar"
     }
 ]
 
