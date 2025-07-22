@@ -45,7 +45,67 @@ mcq_questions = [
         "question": "Which sport involves using a racquet to hit a shuttlecock?",
         "options": ["Badminton", "Squash", "Tennis", "Table Tennis"],
         "answer": "Badminton"
-    }
+    },
+     {
+        "question": "Which country won the FIFA World Cup in 2018?",
+        "options": ["Germany", "Brazil", "France", "Argentina"],
+        "answer": "France"
+    },
+    {
+        "question": "What is the maximum score in a single frame of snooker?",
+        "options": ["155", "147", "150", "140"],
+        "answer": "147"
+    },
+    {
+        "question": "Which sport uses the terms 'love', 'deuce', and 'ace'?",
+        "options": ["Badminton", "Tennis", "Squash", "Volleyball"],
+        "answer": "Tennis"
+    },
+    {
+        "question": "Which athlete is known as the 'Fastest Man Alive'?",
+        "options": ["Carl Lewis", "Usain Bolt", "Michael Johnson", "Tyson Gay"],
+        "answer": "Usain Bolt"
+    },
+    {
+        "question": "What does NBA stand for?",
+        "options": ["National Baseball Association", "National Basketball Association", "North Basketball Association", "New Basketball Association"],
+        "answer": "National Basketball Association"
+    },
+    {
+        "question": "How many players are there in a rugby union team on the field?",
+        "options": ["11", "13", "15", "17"],
+        "answer": "15"
+    },
+    {
+        "question": "Who holds the record for most Grand Slam titles in men’s singles tennis (as of 2025)?",
+        "options": ["Roger Federer", "Novak Djokovic", "Rafael Nadal", "Pete Sampras"],
+        "answer": "Novak Djokovic"
+    },
+    {
+        "question": "In which country were the first modern Olympics held?",
+        "options": ["France", "Greece", "USA", "UK"],
+        "answer": "Greece"
+    },
+    {
+        "question": "Which sport is associated with the Ryder Cup?",
+        "options": ["Cricket", "Golf", "Rugby", "Baseball"],
+        "answer": "Golf"
+    },
+    {
+        "question": "What is the diameter of a basketball hoop (in inches)?",
+        "options": ["15", "16", "18", "20"],
+        "answer": "18"
+    },
+    {
+        "question": "Which footballer is known for the 'Hand of God' goal?",
+        "options": ["Lionel Messi", "Diego Maradona", "Pelé", "Zinedine Zidane"],
+        "answer": "Diego Maradona"
+    },
+    {
+        "question": "Which country hosted the 2022 FIFA World Cup?",
+        "options": ["Qatar", "Russia", "USA", "Spain"],
+        "answer": "Qatar"
+    }
 ]
 
 # Free-text Quiz Mode
