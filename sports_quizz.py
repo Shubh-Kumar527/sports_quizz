@@ -166,7 +166,7 @@ What feedback would you give?
 
 # MCQ Quiz Mode
 elif mode == "Multiple Choice":
-    st.header("🧠 Bonus Round: Multiple Choice!")
+    st.header("🧠 Mind Duel: One Shot, One Truth!")
 
     if 'mcq_index' not in st.session_state:
         st.session_state.mcq_index = 0
