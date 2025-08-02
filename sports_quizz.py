@@ -109,7 +109,7 @@ mcq_questions = [
 ]
 
 # Free-text Quiz Mode
-if mode == "Free Text":
+if mode == "Multiple Choice":
     if 'asked_questions' not in st.session_state:
         st.session_state.asked_questions = []
     if 'question' not in st.session_state or st.session_state.question == "":
