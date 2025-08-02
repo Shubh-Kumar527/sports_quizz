@@ -13,7 +13,7 @@ st.title("Welcome, Challenger")
 st.subheader("Only the Sharpest Minds Make It to the Hall of Fame!")
 
 # Mode selector
-mode = st.radio("Choose Quiz Mode:", ["Free Text", "Multiple Choice"])
+mode = st.radio("Choose Quiz Mode:", ["short answer questions", "Multiple Choice"])
 
 # Free-text Question bank
 question_list = [
